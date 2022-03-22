@@ -1,5 +1,11 @@
-import addContent from "../add-content";
+import footer from "./footer";
+import header from "./header";
 
-document.write("My first Script app.<br />")
+function use(){
+    header();
+    footer();
+    return "";
+}
 
-addContent()
+
+use();
