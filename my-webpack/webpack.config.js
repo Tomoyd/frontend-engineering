@@ -1,5 +1,10 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
+const webpack = require('webpack');
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HappyPack = require('happypack');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 /**
  * @type { import("webpack").WebpackOptions }
@@ -7,7 +12,7 @@ const path = require('path');
 
 module.exports = {
 	mode: 'production',
-	entry: './src/index.js',
+	entry: ['./src/index.js'],
 	output: {
 		filename: '[name].bundle.js',
 		chunkFilename: '[name].chunk.js',
@@ -15,6 +20,7 @@ module.exports = {
 		publicPath: '/',
 	},
 	optimization: {
+		minimizer: [new OptimizeCssAssetsWebpackPlugin({})],
 		splitChunks: {
 			chunks: 'all',
 			minSize: 1000,
@@ -40,6 +46,7 @@ module.exports = {
 		},
 	},
 	module: {
+		noParse: /test.js/,
 		rules: [
 			{
 				test: /\.ts$/,
@@ -49,12 +56,9 @@ module.exports = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
+				include:/src\/scripts/,
 				use: {
-					loader: 'babel-loader',
-					options: {
-						cacheDirectory: true,
-						presets: [['@babel/preset-env', { modules: false }]],
-					},
+					loader: 'happypack/loader?id=js',
 				},
 			},
 			{
@@ -78,6 +82,35 @@ module.exports = {
 			// 	异步加载资源名
 			chunkFilename: '[id].css',
 		}),
+		new webpack.DefinePlugin({
+			// DefinePlugin 在替换环境变量时对于字符串的值是完全替换，对于字符串及包含字符串的对象都要加JSON.stringify
+			ENV: JSON.stringify('策划师'),
+		}),
+		new HtmlWebpackPlugin({
+			template: './public/index.html',
+		}),
+		new HappyPack({
+			id: 'js',
+			loaders: [
+				{
+					loader: 'babel-loader',
+					options: {
+						cacheDirectory: true,
+						presets: [['@babel/preset-env', { modules: false }]],
+					},
+				},
+			],
+		}),
+		new HappyPack({
+			id: 'ts',
+			loaders: [
+				{
+					loader: 'ts-loader',
+					options:{}
+				},
+			],
+		}),
+		// new BundleAnalyzerPlugin(),
 	],
 
 	devServer: {
