@@ -148,7 +148,7 @@
 /******/
 /******/
 /******/ 	// add entry module to deferred list
-/******/ 	deferredModules.push([3,1]);
+/******/ 	deferredModules.push([2,1]);
 /******/ 	// run deferred modules when ready
 /******/ 	return checkDeferredModules();
 /******/ })
@@ -160,29 +160,22 @@
 
 "use strict";
 
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 exports.addNum = void 0;
-const addNum = (a) => a + 1;
+var addNum = function (a) { return a + 1; };
 exports.addNum = addNum;
 console.log('addNum(9)', (0, exports.addNum)(9));
 
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-export const name = '111122';
+module.exports = __webpack_require__(3);
 
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(4);
-
-
-/***/ }),
-/* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -218,20 +211,18 @@ var test = __webpack_require__(1);
 console.log('addNum', Object(test["addNum"])(9))
 
 
-// EXTERNAL MODULE: ./src/test.js
-var src_test = __webpack_require__(2);
-
 // CONCATENATED MODULE: ./src/index.js
 
 
 
+
 function use() {
-	header();
-	footer();
-	return '';
+  header();
+  footer();
+  return '';
 }
 
-console.log('first', src_test["testName"]);
+Object(test["addNum"])();
 use();
 
 

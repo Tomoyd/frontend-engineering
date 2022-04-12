@@ -1,11 +1,12 @@
 import footer from './footer';
 import header from './header';
-import { testName } from './test.js';
+import { addNum } from './test.ts';
+
 function use() {
-	header();
-	footer();
-	return '';
+  header();
+  footer();
+  return '';
 }
 
-console.log('first', testName);
+addNum();
 use();
