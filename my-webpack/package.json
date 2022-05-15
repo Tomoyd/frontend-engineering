@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
+    "prod": "webpack --config webpack.prod.config.js",
     "dev": "npx webpack",
     "rollup": "rollup -c rollup.config.js",
     "test:size": "bundlesize"
@@ -40,5 +41,8 @@
     "ts-loader": "^7.0.5",
     "typescript": "^4.6.2",
     "url-loader": "^4.1.1"
-  }
+  },
+  "sideEffects": [
+    "./tree-shaking/test.js"
+  ]
 }
