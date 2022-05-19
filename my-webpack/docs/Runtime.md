@@ -48,3 +48,16 @@ m 指向 modules
 n 默认导出的 getter
 r 在 exports 上定义\_esModule =true
 t 定义一个命名空间 会对已存在等各种 mode 做判断返回
+
+#### 异步加载模块
+
+jsonp 与动态添加脚本
+
+重写初始化 window[webpackJsonp] 数组，并对 webpackJsonp 的 push 重写 webpackJsonpCallback
+执行`__webpack_require__` 加载入口文件
+
+\_\_webpack_require\_\_.e 进行异步脚本的加载 ，
+异步脚本执行加载完，会执行 window[webpackJsonp].push 将模块 push 进去，执行 push 就是执行 webpackJsonpCallback
+内部采用 promise.all 处理异步加载
+
+加载完后 then 进行`__webpack_require__` 加载模块 moduleId 经 exports 输出
