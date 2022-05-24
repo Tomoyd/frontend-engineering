@@ -129,3 +129,5 @@ https://link.segmentfault.com/?enc=VOiDaJ0uwsbw8PnI5BCcSw%3D%3D.9x%2BTZBAxK6DUXv
 ndb 工具实现断点调试 https://link.segmentfault.com/?enc=ovEq7%2BUZaAcsuSqHDe%2BnSA%3D%3D.Wx7Qj3X%2BssLfa2LmrAMAX6e%2Fy7fb%2FYLgkrI9V%2FOGX47XoK4%2FIYeH2CQHQERzg3Jm
 npm link 将 Loader 模块链接到测试项目
 resolveLoader 配置项将 Loader 所在的目录加入到测试项目中，如：
+
+[编写一个loader](https://webpack.docschina.org/contribute/writing-a-loader/)
