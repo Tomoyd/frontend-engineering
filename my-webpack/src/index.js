@@ -1,12 +1,12 @@
 import footer from './footer';
 import header from './header';
-import { addNum } from './test.ts';
+// import { addNum } from './test.ts';
 
 function use() {
   header();
   footer();
-  return '';
+  return '111111';
 }
 
-addNum();
+// addNum();
 use();

@@ -77,10 +77,10 @@ module.exports = {
     ],
   },
   plugins: [
-    new GenerateRoute(),
+    // new GenerateRoute(),
     new MiniCssExtractPlugin({
       // 同步加载资源名
-      filename: '[name].css',
+      filename: '[contentHash:5].css',
       // 	异步加载资源名
       chunkFilename: '[id].css',
     }),

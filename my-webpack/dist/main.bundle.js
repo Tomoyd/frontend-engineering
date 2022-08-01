@@ -148,7 +148,7 @@
 /******/
 /******/
 /******/ 	// add entry module to deferred list
-/******/ 	deferredModules.push([2,1]);
+/******/ 	deferredModules.push([1,1]);
 /******/ 	// run deferred modules when ready
 /******/ 	return checkDeferredModules();
 /******/ })
@@ -158,24 +158,11 @@
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-exports.__esModule = true;
-exports.addNum = void 0;
-var addNum = function (a) { return a + 1; };
-exports.addNum = addNum;
-console.log('addNum(9)', (0, exports.addNum)(9));
+module.exports = __webpack_require__(2);
 
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(3);
-
-
-/***/ }),
-/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -195,34 +182,29 @@ var utils = __webpack_require__(0);
 // CONCATENATED MODULE: ./src/assets/index.css
 // extracted by mini-css-extract-plugin
 
-// EXTERNAL MODULE: ./src/test.ts
-var test = __webpack_require__(1);
-
 // CONCATENATED MODULE: ./src/header.js
 
 
-
+// import { addNum } from './test.ts';
 /* harmony default export */ var header = (function () {
-    document.write(Object(utils["a" /* getTimes */])()+"策划师")
-	return  24 * 60 * 60 * 1000;
+  // document.write(getTimes()+ENV)
+  return 24 * 60 * 60 * 1000;
 });
 
-
-console.log('addNum', Object(test["addNum"])(9))
-
+// console.log('addNum', addNum(9))
 
 // CONCATENATED MODULE: ./src/index.js
 
 
-
+// import { addNum } from './test.ts';
 
 function use() {
   header();
   footer();
-  return '';
+  return '111111';
 }
 
-Object(test["addNum"])();
+// addNum();
 use();
 
 

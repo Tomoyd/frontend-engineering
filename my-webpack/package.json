@@ -44,6 +44,7 @@
     "url-loader": "^4.1.1"
   },
   "sideEffects": [
-    "./tree-shaking/test.js"
+    "./tree-shaking/test.js",
+    "*.css"
   ]
 }
