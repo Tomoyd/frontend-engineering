@@ -1,3 +1,10 @@
+const BannerWebpackPlugin = require('./plugins/BannerWebpackPlugin');
+const BasePlugin = require('./plugins/base');
+const clearWebpackPlugin = require('./plugins/ClearWebpackPlugin');
+const path = require('path');
+const AnalyzeWebpackPlugin = require('./plugins/AnalyzerWebpackPlugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const InlineWebpackPlugin = require('./plugins/InlineWebpackPlugin');
 /**
  * @type {import("webpack").Configuration}
  */
@@ -9,9 +16,18 @@ module.exports = {
       runtime: 'common-w',
     },
   },
+  plugins: [
+    new clearWebpackPlugin(),
+    new AnalyzeWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, 'index.html'),
+    }),
+    new InlineWebpackPlugin(),
+  ],
   output: {
-    assetModuleFilename: 'images/[hash][ext][query]',
-    clean: true,
+    assetModuleFilename: 'images/[hash].[ext][query]',
+    clean: false,
+    path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
