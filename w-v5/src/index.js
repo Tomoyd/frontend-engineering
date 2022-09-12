@@ -1,4 +1,4 @@
-import '!style-loader!css-loader!less-loader!./styles/test.less';
+// import '!style-loader!css-loader!less-loader!./styles/test.less';
 /**
  * 内联方式
  * ! 分割各个loader和资源
@@ -28,7 +28,7 @@ import '!style-loader!css-loader!less-loader!./styles/test.less';
  *
  */
 
-import image from './test.jpg';
-const name = 'hello';
-console.log('image', image);
-console.log('name', name);
+// import image from './test.jpg';
+// const name = 'hello';
+// console.log('image', image);
+// console.log('name', name);

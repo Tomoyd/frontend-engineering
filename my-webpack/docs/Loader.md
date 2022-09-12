@@ -131,3 +131,21 @@ npm link 将 Loader 模块链接到测试项目
 resolveLoader 配置项将 Loader 所在的目录加入到测试项目中，如：
 
 [编写一个loader](https://webpack.docschina.org/contribute/writing-a-loader/)
+
+
+#### loader的分类
+preloader
+normal loader
+inline loader
+post loader
+
+执行顺序按照 pre normal inline post 执行
+如果一样，按照声明的顺序，从数组末尾向前执行
+### loader的声明方式
+1. 配置方式 (pre,normal post)
+2. 内联方式
+   1. 通过!分隔 连接loader与最后的文件 通过? 连接参数
+      style-loader!css-loader?modules!./style.css;
+   2. 最前面一个! 会忽略normal Loader
+   3. -! 会忽略pre normal Loader
+   4. !! 忽视所有配置的loader pre normal post

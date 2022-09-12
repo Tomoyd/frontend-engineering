@@ -2,20 +2,44 @@
  * @type {import("webpack").Configuration}
  */
 module.exports = {
+  mode: 'production',
   entry: {
     main: {
-      import: './src/index.js',
+      import: './src/loader.js',
       runtime: 'common-w',
     },
   },
   output: {
     assetModuleFilename: 'images/[hash][ext][query]',
+    clean: true,
   },
   module: {
     rules: [
       {
+        test: /\.js$/,
+        use: [
+          {
+            loader: './loaders/babelLoader.js',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+          './loaders/clearLogLoader.js',
+          {
+            loader: './loaders/bannerLoader.js',
+            options: {
+              author: 'Tomo',
+            },
+          },
+        ],
+      },
+      {
         test: /\.less$/,
-        use: ['style-loader', { loader: 'css-loader' }, 'less-loader'],
+        use: [
+          './loaders/styleLoader.js',
+          { loader: 'css-loader' },
+          'less-loader',
+        ],
       },
 
       /***
@@ -24,13 +48,14 @@ module.exports = {
        */
       {
         test: /\.(png|jpg|gif)$/i,
-        type: 'asset',
-        dependency: { not: ['url'] },
-        parser: {
-          dataUrlCondition: {
-            maxSize: 8 * 1024,
-          },
-        },
+        loader: './loaders/fileLoader.js',
+        type: 'javascript/auto',
+        // dependency: { not: ['url'] },
+        // parser: {
+        //   dataUrlCondition: {
+        //     maxSize: 8 * 1024,
+        //   },
+        // },
       },
     ],
   },

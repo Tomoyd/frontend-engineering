@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --mode=production"
+    "build": "webpack"
   },
   "keywords": [
     "webpack",
@@ -21,8 +21,13 @@
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2"
   },
-  "sideEffects":[
+  "sideEffects": [
     "*.less",
     "*.jpg"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/preset-env": "^7.19.0",
+    "loader-utils": "^3.2.0"
+  }
 }
